@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     createStageFlash();
     initIntroFlow();
     initLocationButtons();
+    initRestartButton();
     initPointerGlow();
     initSceneDirector();
     createLightshow();
@@ -30,34 +31,50 @@ function currentPage() {
 function initIntroFlow() {
     const page = currentPage();
     const reducedMotion = prefersReducedMotion();
-    const flows = {
-        "index.html": 1900,
-        "page2.html": 1800,
-        "page3.html": 2000,
-        "page4.html": 1700
-    };
-    const next = {
-        "index.html": "page2.html",
-        "page2.html": "page3.html",
-        "page3.html": "page4.html",
-        "page4.html": "event-main.html"
-    };
 
-    if (!flows[page]) return;
+    if (page === "index.html" || page === "") {
+        runSinglePageIntro(reducedMotion);
+        return;
+    }
 
-    const delay = reducedMotion ? 800 : flows[page];
-    window.setTimeout(() => goNext(next[page]), delay);
+    if (["page2.html", "page3.html", "page4.html"].includes(page)) {
+        window.location.replace("index.html");
+    }
+}
+
+function runSinglePageIntro(reducedMotion) {
+    const title = document.getElementById("intro-title");
+    if (!title) return;
+
+    const slides = ["Beach Party", "Sunset Bass", "Neon Shore", "Gran Canaria"];
+    const delay = reducedMotion ? 650 : 1450;
+    let index = 0;
+
+    function nextSlide() {
+        index += 1;
+
+        if (index >= slides.length) {
+            goNext("event-main.html");
+            return;
+        }
+
+        title.classList.add("title-switching");
+        window.setTimeout(() => {
+            title.textContent = slides[index];
+            title.classList.remove("title-switching");
+        }, reducedMotion ? 20 : 260);
+
+        window.setTimeout(nextSlide, delay);
+    }
+
+    window.setTimeout(nextSlide, delay);
 }
 
 function goNext(url) {
-    document.body.classList.add("stage-change");
-    window.setTimeout(() => {
-        document.body.classList.add("fade-out");
-    }, prefersReducedMotion() ? 0 : 180);
-
+    document.body.classList.add("final-transition");
     window.setTimeout(() => {
         window.location.href = url;
-    }, prefersReducedMotion() ? 100 : 680);
+    }, prefersReducedMotion() ? 100 : 720);
 }
 
 function initLocationButtons() {
@@ -70,6 +87,18 @@ function initLocationButtons() {
         button.addEventListener("click", () => {
             window.open("https://maps.google.com/?q=Playa+del+Ingles+Gran+Canaria", "_blank", "noopener");
         });
+    });
+}
+
+function initRestartButton() {
+    const button = document.getElementById("restart-animation");
+    if (!button) return;
+
+    button.addEventListener("click", () => {
+        document.body.classList.add("stage-change");
+        window.setTimeout(() => {
+            window.location.href = "index.html";
+        }, prefersReducedMotion() ? 100 : 620);
     });
 }
 

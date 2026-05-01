@@ -95,6 +95,10 @@ body.stage-change .stage-flash {
     animation: stageFlash 620ms ease forwards;
 }
 
+body.final-transition .stage-flash {
+    animation: finalWash 760ms ease forwards;
+}
+
 body[data-flash="0"] .pattern-layer {
     background-size: 3rem 3rem, 4.8rem 4.8rem, 6.5rem 6.5rem;
     opacity: 0.9;
@@ -363,6 +367,19 @@ nav a:focus-visible {
     filter: drop-shadow(0 0 46px rgba(255, 255, 255, 0.35));
 }
 
+.intro-screen h1 {
+    transition:
+        opacity 260ms ease,
+        filter 260ms ease,
+        transform 260ms ease;
+}
+
+.intro-screen h1.title-switching {
+    opacity: 0;
+    filter: blur(14px) saturate(2);
+    transform: scale(1.08) translateY(-0.4rem);
+}
+
 .intro-screen .sub {
     max-width: 42rem;
     margin-top: 1.3rem;
@@ -426,7 +443,8 @@ nav a:hover {
 .section-grid,
 .timeline,
 .tickets,
-.location {
+.location,
+.restart-show {
     position: relative;
     z-index: 2;
     width: min(1120px, calc(100% - 2rem));
@@ -801,8 +819,25 @@ nav a:hover {
     margin-top: 1.2rem;
 }
 
+.restart-show {
+    display: grid;
+    place-items: center;
+    margin: 0 auto 5rem;
+    padding: 2rem 0 0;
+}
+
+.restart-show .btn {
+    box-shadow:
+        0 0 34px rgba(255, 42, 161, 0.72),
+        0 0 72px rgba(0, 229, 255, 0.48);
+}
+
 .fade-out {
     animation: fadeOut 0.7s ease forwards;
+}
+
+.final-transition {
+    animation: finalPageBlend 760ms ease forwards;
 }
 
 .is-visible {
@@ -882,6 +917,20 @@ nav a:hover {
     0% { opacity: 0; }
     30% { opacity: 0.95; }
     100% { opacity: 0; }
+}
+
+@keyframes finalWash {
+    0% { opacity: 0; }
+    35% { opacity: 0.78; }
+    100% { opacity: 1; }
+}
+
+@keyframes finalPageBlend {
+    to {
+        opacity: 0.42;
+        filter: saturate(1.9) brightness(1.25);
+        transform: scale(1.01);
+    }
 }
 
 @keyframes orbitSnap {
