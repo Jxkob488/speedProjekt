@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beach Party Gran Canaria</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js?v=6" defer></script>
+</head>
+<body class="event-page">
+<div class="ambient" aria-hidden="true"></div>
+<div class="pattern-layer" aria-hidden="true"></div>
+<div class="beach-layer" aria-hidden="true">
+    <span class="beach-sun"></span>
+    <span class="beach-wave wave-a"></span>
+    <span class="beach-wave wave-b"></span>
+    <span class="palm-stripe palm-a"></span>
+    <span class="palm-stripe palm-b"></span>
+</div>
+<div class="lightshow" aria-hidden="true"></div>
+<div class="particles" aria-hidden="true"></div>
+<canvas id="threejs-canvas" class="threejs-bg" aria-hidden="true"></canvas>
+
+<header class="site-header">
+    <a class="brand" href="index.html">Beach Party</a>
+    <nav aria-label="Hauptnavigation">
+        <a href="#programm">Programm</a>
+        <a href="#zones">Beach Zones</a>
+        <a href="#tickets">Tickets</a>
+        <a href="#location">Location</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-copy">
+            <p class="kicker">20. bis 22. Mai 2026 - Gran Canaria</p>
+            <h1>Beach Party Gran Canaria</h1>
+            <p class="lead">Drei Tage Strand, Live-DJs, Wassersport, Street Food, Sunset-Sessions und Neon-Lichter direkt an der Brandung.</p>
+            <div class="hero-actions">
+                <a class="btn primary" href="#tickets">Tickets ansehen</a>
+                <button class="btn ghost" id="location-btn" type="button">Route öffnen</button>
+            </div>
+        </div>
+
+        <div class="hero-object" aria-hidden="true">
+            <span class="sun-disc"></span>
+            <span class="orbit orbit-a"></span>
+            <span class="orbit orbit-b"></span>
+            <span class="shape triangle"></span>
+            <span class="shape square"></span>
+            <span class="shape ring"></span>
+            <span class="shape beach-ball"></span>
+            <span class="shape surf-fin"></span>
+        </div>
+    </section>
+
+    <section class="info-strip" aria-label="Eventdaten">
+        <article>
+            <span>Datum</span>
+            <strong>20.-22. Mai</strong>
+        </article>
+        <article>
+            <span>Ort</span>
+            <strong>Playa del Ingles</strong>
+        </article>
+        <article>
+            <span>Preis</span>
+            <strong>ab 25 EUR</strong>
+        </article>
+    </section>
+
+    <section class="section-grid" id="programm">
+        <div class="section-heading">
+            <p class="kicker">Programm</p>
+            <h2>Strand, Bass und Sunset-Action.</h2>
+        </div>
+        <article class="feature-card hot">
+            <span class="icon">DJ</span>
+            <h3>Live Acts</h3>
+            <p>Internationale DJs, Sunset-Sets, Laser im Nebel und Bass direkt neben der Strandbar.</p>
+        </article>
+        <article class="feature-card aqua">
+            <span class="icon">Sea</span>
+            <h3>Action am Wasser</h3>
+            <p>Jetski, Parasailing, Beachvolleyball, Banana Boat und Chill-Zonen mit Blick aufs Meer.</p>
+        </article>
+        <article class="feature-card lime">
+            <span class="icon">Food</span>
+            <h3>Food & Drinks</h3>
+            <p>Street Food, alkoholfreie Specials, Cocktails, Eisbar und schnelle Wege zu allen Ständen.</p>
+        </article>
+    </section>
+
+    <section class="beach-zones" id="zones" aria-label="Beach Party Bereiche">
+        <div>
+            <p class="kicker">Beach Zones</p>
+            <h2>Jede Zone fühlt sich anders an.</h2>
+        </div>
+        <div class="zone-list">
+            <article class="zone-card sunset">
+                <strong>Sunset Deck</strong>
+                <span>Golden Hour Sets, Fotos, Drinks und Blick auf die Wellen.</span>
+            </article>
+            <article class="zone-card wave">
+                <strong>Wave Arena</strong>
+                <span>Wassersport, Games, Schaumparty und schnelle Action.</span>
+            </article>
+            <article class="zone-card neon">
+                <strong>Neon Shore</strong>
+                <span>Lichtshow, Mainstage, Feuerwerk und Nachtprogramm.</span>
+            </article>
+        </div>
+    </section>
+
+    <section class="timeline" aria-label="Ablauf">
+        <div>
+            <p class="kicker">Ablauf</p>
+            <h2>Von Beach Check-in bis Neon Finale.</h2>
+        </div>
+        <ol>
+            <li><strong>10:00</strong><span>Beach Check-in, Welcome Drinks und Handtuch-Spots</span></li>
+            <li><strong>14:00</strong><span>Wassersport, Volleyball, Foam Zone und Workshops</span></li>
+            <li><strong>19:00</strong><span>Sunset Mainstage mit DJs direkt am Wasser</span></li>
+            <li><strong>23:00</strong><span>Neon Finale, Feuerwerk und After-Beach-Set</span></li>
+        </ol>
+    </section>
+
+    <section class="tickets" id="tickets">
+        <div>
+            <p class="kicker">Tickets</p>
+            <h2>Wähle schnell, was zu dir passt.</h2>
+        </div>
+        <div class="ticket-list">
+            <article class="ticket-card">
+                <span>Day Pass</span>
+                <strong>25 EUR</strong>
+                <p>Ein Tag Festival, Strandbereich und Mainstage.</p>
+            </article>
+            <article class="ticket-card featured">
+                <span>Weekend Pass</span>
+                <strong>50 EUR</strong>
+                <p>Drei Tage, Fast Lane, Beach Games und Zugang zur Neon Show.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="location" id="location">
+        <p class="kicker">Location</p>
+        <h2>Playa del Ingles, Gran Canaria</h2>
+        <p>Der Treffpunkt liegt direkt am Strand. Die wichtigsten Infos bleiben oben sichtbar, die Route öffnet sich per Button.</p>
+        <button class="btn primary" id="location-btn-secondary" type="button">In Maps öffnen</button>
+    </section>
+</main>
+</body>
+</html>
